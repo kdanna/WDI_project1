@@ -18,15 +18,15 @@
 
 }
 
+.center-block {
+  display: block;
+  margin: auto !important;
+}
+
 .col-md-3{
    border: 1px solid black;
    height: 600px;
 }
 .col-md-2{
-    border: 1px solid black;
    	height: 100px;
-}
-.col-md-10{
-   border: 1px solid black;
-   height: 20px;
 }
