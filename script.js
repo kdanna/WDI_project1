@@ -1,5 +1,5 @@
 
-window.onload = function(){
+window.onload = setGame;
 
 //Global Variables
 
@@ -17,25 +17,25 @@ var bar4 = document.getElementById("bar4");
 	
 		playerSequence = [];
 		$('#bar1').click(function() { 
-			playerSequence.push(bar1);
+			playerSequence.push(bar1.id);
 		});
 
 		$('#bar2').click(function() { 
-			playerSequence.push(bar2);
+			playerSequence.push(bar2.id);
 		});
 
 		$('#bar3').click(function() { 
-			playerSequence.push(bar3);
+			playerSequence.push(bar3.id);
 		});
 
 		$('#bar4').click(function() { 
-			playerSequence.push(bar4);
+			playerSequence.push(bar4.id);
 		});
 
 
 //set the event listen on the start button
 var startGameButton = document.getElementById("startButton").addEventListener("click", function(){
-		setGame();
+		startRound();
 	});
 
 //set the event listener for the reset button
@@ -53,7 +53,6 @@ document.getElementById("levelArea").innerHTML = level;
 		computerSequence = [];
 		playerSequence = []; 
 		level = 0;
-		startRound();
 	}
 
 //WORKS. clears the level and sets game back at the beginning
@@ -80,27 +79,26 @@ document.getElementById("levelArea").innerHTML = level;
 		document.getElementById("levelArea").innerHTML = "Current Round: " + level;
 	}
 
-//I think I am close to figuring this out.  A random number is generated 1-4. Each number is assigned to a colored bar.
+//WORKS. random number is generated 1-4. Each number is assigned to a colored bar.
 
 	function computerRandom () {
-	  	computerSequence = [];
 	  	var randomNumber = Math.floor(Math.random()*(4))+1;
 	  		if (randomNumber === 1){
-	  			computerSequence.push(bar1);
+	  			computerSequence.push(bar1.id);
 	  		}else if (randomNumber === 2){
-	  			computerSequence.push(bar2);
+	  			computerSequence.push(bar2.id);
 			}else if (randomNumber === 3){
-				computerSequence.push(bar3);
+				computerSequence.push(bar3.id);
 			}else{
-				computerSequence.push(bar4);
+				computerSequence.push(bar4.id);
 			}
-		console.log(computerSequence);
-		return computerSequence; 
-}
+		console.log("the computerSequence is " + computerSequence);
+		//return computerSequence;
+		startFlash();
+	}
 
-//trying out the computer moveLightUp function
-	//idea 1
 
+//WORKS.  Iterate through the computerSequence array and pass [i] to setFlash function.
 function setFlash(i){
 			setTimeout(function(){	
 					$("#"+computerSequence[i]).delay(200).fadeOut(300).fadeIn(300);
@@ -109,22 +107,21 @@ function setFlash(i){
 				}, i *1000);
 	}
 
-for (var i =0; i < computerSequence.length; i++) 
-		setFlash(i);
-
-
-
-
-
+//WORKS. This function is triggered once the computerRandom function runs.
+function startFlash () {
+	for (var i =0; i < computerSequence.length; i++) 
+			setFlash(i);
+}
 
 
 //trying to compare computerSequence to playerSequence
+function compareAgainstComp (){
+	//if computer array is  ==== player array then go back to startRound, else looser
+
+}
 
 
 
 
-
-
-};
 
 
