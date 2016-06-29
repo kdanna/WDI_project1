@@ -6,7 +6,8 @@ window.onload = setGame;
 var computerSequence = []; //an array to keep trak of computerSequence 
 var playerSequence = []; //an array to keep track of the player's moves
 var level = 0; //a counter to keep track of level
-var toggle = false; //need to keep track of color and comp vs. player toggle
+var toNextLevel = false; //need to keep track of color and comp vs. player toggle
+var clickCounter  = 0;
 
 var bar1 = document.getElementById("bar1");
 var bar2 = document.getElementById("bar2");
@@ -18,18 +19,26 @@ var bar4 = document.getElementById("bar4");
 		playerSequence = [];
 		$('#bar1').click(function() { 
 			playerSequence.push(bar1.id);
+			clickCounter++;
+			checkPlayerClicks();
 		});
 
 		$('#bar2').click(function() { 
 			playerSequence.push(bar2.id);
+			clickCounter++;
+			checkPlayerClicks();
 		});
 
 		$('#bar3').click(function() { 
 			playerSequence.push(bar3.id);
+			clickCounter++;
+			checkPlayerClicks();
 		});
 
 		$('#bar4').click(function() { 
 			playerSequence.push(bar4.id);
+			clickCounter++;
+			checkPlayerClicks();
 		});
 
 
@@ -81,7 +90,7 @@ document.getElementById("levelArea").innerHTML = level;
 
 //WORKS. random number is generated 1-4. Each number is assigned to a colored bar.
 
-	function computerRandom () {
+	function computerRandom(){
 	  	var randomNumber = Math.floor(Math.random()*(4))+1;
 	  		if (randomNumber === 1){
 	  			computerSequence.push(bar1.id);
@@ -99,26 +108,44 @@ document.getElementById("levelArea").innerHTML = level;
 
 
 //WORKS.  Iterate through the computerSequence array and pass [i] to setFlash function.
-function setFlash(i){
-			setTimeout(function(){	
-					$("#"+computerSequence[i]).delay(200).fadeOut(300).fadeIn(300);
-					console.log("time between intervals is" + (i+1));
-					console.log(computerSequence[i]);
-				}, i *1000);
-	}
+	function setFlash(i){
+				setTimeout(function(){	
+						$("#"+computerSequence[i]).delay(200).fadeOut(300).fadeIn(300);
+						console.log("time between intervals is" + (i+1));
+						console.log(computerSequence[i]);
+					}, i *1000);
+		}
 
 //WORKS. This function is triggered once the computerRandom function runs.
-function startFlash () {
-	for (var i =0; i < computerSequence.length; i++) 
-			setFlash(i);
+	function startFlash () {
+		for (var i =0; i < computerSequence.length; i++) 
+				setFlash(i);
+	}
+
+
+function checkPlayerClicks(){
+
+	if (clickCounter === playerSequence.length){
+			compareAgainstComp();
+		}
 }
 
 
-//trying to compare computerSequence to playerSequence
-function compareAgainstComp (){
+//Function works on its own. Try to figure out how to have it fire once clicks come in.
+function compareAgainstComp(){
+  if(JSON.stringify(computerSequence)===JSON.stringify(playerSequence)){
+  	toNextLevel = true;
+  	console.log("going to next level "+ toNextLevel);
+  	playerSequence = [];
+  	clickCounter = 0;
+  	startRound();
+  	  }else{
+  		console.log("game over");
+  }
+}
 	//if computer array is  ==== player array then go back to startRound, else looser
 
-}
+
 
 
 
