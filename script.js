@@ -1,17 +1,37 @@
 
 window.onload = function(){
 
-	console.log("onload function works");
-
 //Global Variables
+
 var computerSequence = []; //an array to keep trak of computerSequence 
 var playerSequence = []; //an array to keep track of the player's moves
 var level = 0; //a counter to keep track of level
+var toggle = false; //need to keep track of color and comp vs. player toggle
 
 var bar1 = document.getElementById("bar1");
 var bar2 = document.getElementById("bar2");
 var bar3 = document.getElementById("bar3");
 var bar4 = document.getElementById("bar4");
+
+// Adding event listeners to each bar and it will populate the playerSequence when pressed
+	
+		playerSequence = [];
+		$('#bar1').click(function() { 
+			playerSequence.push(bar1);
+		});
+
+		$('#bar2').click(function() { 
+			playerSequence.push(bar2);
+		});
+
+		$('#bar3').click(function() { 
+			playerSequence.push(bar3);
+		});
+
+		$('#bar4').click(function() { 
+			playerSequence.push(bar4);
+		});
+
 
 //set the event listen on the start button
 var startGameButton = document.getElementById("startButton").addEventListener("click", function(){
@@ -78,32 +98,33 @@ document.getElementById("levelArea").innerHTML = level;
 		return computerSequence; 
 }
 
-//In process - I need to figure out how to add listener to each bar...
-	playerSequence = [];
-	$("#box1, #box2, #box3, #box4").click(function(){
-	playerSequence.push($this.val());
-				console.log(playerSequence);
-			});
+//trying out the computer moveLightUp function
+	//idea 1
+
+function setFlash(i){
+			setTimeout(function(){	
+					$("#"+computerSequence[i]).delay(200).fadeOut(300).fadeIn(300);
+					console.log("time between intervals is" + (i+1));
+					console.log(computerSequence[i]);
+				}, i *1000);
+	}
+
+for (var i =0; i < computerSequence.length; i++) 
+		setFlash(i);
+
+
+
+
+
+
+
+//trying to compare computerSequence to playerSequence
+
+
+
 
 
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
