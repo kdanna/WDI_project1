@@ -40,14 +40,17 @@ document.getElementById("levelArea").innerHTML = level;
 
 	function resetGame(){
 		console.log("resetGame function is working");
-		setGame();
+		computerSequence = [];
+		playerSequence = []; 
+		level = 0;
+		document.getElementById("levelArea").innerHTML = "Press START to play again";
 	}
 
 
 //startRound sets the level to 1 and will increase by 1 each time it runs
 	function startRound(){
 		levelUp();
-		newComputerMove();
+		computerRandom();
 	}
 
 
@@ -57,18 +60,24 @@ document.getElementById("levelArea").innerHTML = level;
 		document.getElementById("levelArea").innerHTML = "Current Round: " + level;
 	}
 
-//In process - Trying to figure out how to get a random number and then push it into an array.
+//I think I am close to figuring this out.  A random number is generated 1-4. Each number is assigned to a colored bar.
 
 	function computerRandom () {
-  		return Math.floor(Math.random()*(4))+1;
-	 }
+	  	computerSequence = [];
+	  	var randomNumber = Math.floor(Math.random()*(4))+1;
+	  		if (randomNumber === 1){
+	  			computerSequence.push(bar1);
+	  		}else if (randomNumber === 2){
+	  			computerSequence.push(bar2);
+			}else if (randomNumber === 3){
+				computerSequence.push(bar3);
+			}else{
+				computerSequence.push(bar4);
+			}
+		console.log(computerSequence);
+		return computerSequence; 
+}
 
-	 function newComputerMove(){
-	 	computerSequence = [];
-	 	var quad = computerRandom();
-	 	computerSequence.push(quad-1);
-	 	console.log(computerSequence);
-	 }
 //In process - I need to figure out how to add listener to each bar...
 	playerSequence = [];
 	$("#box1, #box2, #box3, #box4").click(function(){
