@@ -1,32 +1,49 @@
 
-
+body{
+	background-color: black;
+	color: white;
+}
 
 #titlerow{
-	height: 100px;
-
-
+	height: 50px;
+	/*font-size: 100px !important;*/
 }
 
 #resetbutton{
-
-
+	height: 50px;
 }
+
+#levelArea{
+	height:50px;
+}
+
 
 #instuctionsArea{
 
-
-
 }
 
-.center-block {
-  display: block;
-  margin: auto !important;
-}
 
 .col-md-3{
    border: 1px solid black;
-   height: 600px;
+   height: 700px;
 }
-.col-md-2{
-   	height: 100px;
+
+#bar1 {
+	background-color: MediumBlue;
 }
+
+#bar2{
+	background-color: LightBlue;
+}
+
+
+#bar3{
+	background-color: cyan;
+}
+
+
+
+#bar4{
+	background-color: teal;
+}
+
