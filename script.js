@@ -1,4 +1,3 @@
-
 window.onload = setGame;
 
 //Global Variables
@@ -6,7 +5,6 @@ window.onload = setGame;
 var computerSequence = []; //an array to keep trak of computerSequence 
 var playerSequence = []; //an array to keep track of the player's moves
 var level = 0; //a counter to keep track of level
-var toNextLevel = false; //need to keep track of color and comp vs. player toggle
 var clickCounter  = 0;
 
 var messageBox = "";
@@ -55,7 +53,7 @@ var resetGameButton = document.getElementById("resetbutton").addEventListener("c
 	});
 
 //using DOM manipulation to keep track of the level
-document.getElementById("levelArea").innerHTML = level;
+document.getElementById("levelArea").innerHTML = "Round: " + level;
 
 
 //WORKS. the startGame function readys the game and calls the startRound function
@@ -64,16 +62,16 @@ document.getElementById("levelArea").innerHTML = level;
 		computerSequence = [];
 		playerSequence = []; 
 		level = 0;
+		document.getElementById("messageBox").innerHTML = "";
 	}
 
-//WORKS. clears the level and sets game back at the beginning
-
+//WORKS. clears the level and sets game back to its onload state. 
 	function resetGame(){
+		document.location.reload(true);
 		console.log("resetGame function is working");
-		computerSequence = [];
-		playerSequence = []; 
-		level = 0;
-		document.getElementById("levelArea").innerHTML = "Press START to play again";
+		// computerSequence = [];
+		// playerSequence = []; 
+		// level = 0;
 	}
 
 //startRound sets the level to 1 and will increase by 1 each time it runs
@@ -86,7 +84,7 @@ document.getElementById("levelArea").innerHTML = level;
 //WORKS. levelUp will increase the level by 1 each time it is run
 	function levelUp(){
 		level++;
-		document.getElementById("levelArea").innerHTML = "Current Round: " + level;
+		document.getElementById("levelArea").innerHTML = "Round: " + level;
 	}
 
 //WORKS. random number is generated 1-4. Each number is assigned to a colored bar.
@@ -103,7 +101,6 @@ document.getElementById("levelArea").innerHTML = level;
 				computerSequence.push(bar4.id);
 			}
 		console.log("the computerSequence is " + computerSequence);
-		//return computerSequence;
 		startFlash();
 	}
 
@@ -112,8 +109,6 @@ document.getElementById("levelArea").innerHTML = level;
 	function setFlash(i){
 				setTimeout(function(){	
 						$("#"+computerSequence[i]).delay(200).fadeOut(300).fadeIn(300);
-						console.log("time between intervals is" + (i+1));
-						console.log(computerSequence[i]);
 					}, i *1000);
 		}
 
@@ -126,7 +121,7 @@ document.getElementById("levelArea").innerHTML = level;
 
 function checkPlayerClicks(){
 
-	if (clickCounter === playerSequence.length){
+	if (clickCounter === computerSequence.length){
 			compareAgainstComp();
 		}
 }
@@ -135,21 +130,13 @@ function checkPlayerClicks(){
 //Function works on its own. Try to figure out how to have it fire once clicks come in.
 function compareAgainstComp(){
   if(JSON.stringify(computerSequence)===JSON.stringify(playerSequence)){
-  	toNextLevel = true;
-  	console.log("going to next level "+ toNextLevel);
   	playerSequence = [];
   	clickCounter = 0;
   	startRound();
   	  }else{
-  	  	console.log("game over");
+  	  	document.getElementById("messageBox").innerHTML = "Wrong Guess. GAME OVER. Press CLEAR & then START & try again.";
+  		console.log("game over");
+
   }
 }
-	//if computer array is  ==== player array then go back to startRound, else looser
-
-
-
-
-
-
-
 
