@@ -1,25 +1,36 @@
 
+
 body{
+	font-family: Helvetica;
 	background-color: black;
 	color: white;
 }
 
-#titlerow{
-	height: 50px;
-	/*font-size: 100px !important;*/
-}
 
-#resetbutton{
+
+#titlerow {
 	height: 50px;
+	font-size: 50px;
+	font-weight: bold;
+	
 }
 
 #levelArea{
 	height:50px;
+	color: red;
+	font-size: 20px;
+	font-weight: bold
 }
 
+#messageBox{
+	font-size: 14px;
+	color: red;
+
+}
 
 #instuctionsArea{
-
+	font-size: 14px;
+ 
 }
 
 .col-md-3{
@@ -29,23 +40,40 @@ body{
 
 #bar1 {
 	background-color: MediumBlue;
+   height: 700px;
+}
+
+#bar1{
+ 	background-color: mediumBlue;
+}
+
+#bar1:hover{
+	opacity: 0.8;
 }
 
 #bar2{
 	background-color: LightBlue;
 }
 
+#bar2:hover{
+	opacity: 0.8;
+}
 
 #bar3{
 	background-color: cyan;
 }
 
-
+#bar3:hover{
+	opacity: 0.8;
+}
 
 #bar4{
 	background-color: teal;
 }
 
-.hightColor{
-	background-color: black;
+#bar4:hover{
+	opacity: 0.8;
 }
+
+
+
