@@ -1,4 +1,3 @@
-
 window.onload = setGame;
 
 //Global Variables
@@ -62,16 +61,16 @@ document.getElementById("levelArea").innerHTML = level;
 		computerSequence = [];
 		playerSequence = []; 
 		level = 0;
+		document.getElementById("messageBox").innerHTML = "";
 	}
 
-//WORKS. clears the level and sets game back at the beginning
-
+//WORKS. clears the level and sets game back to its onload state. 
 	function resetGame(){
+		document.location.reload(true);
 		console.log("resetGame function is working");
-		computerSequence = [];
-		playerSequence = []; 
-		level = 0;
-		document.getElementById("levelArea").innerHTML = "Press START to play again";
+		// computerSequence = [];
+		// playerSequence = []; 
+		// level = 0;
 	}
 
 
@@ -125,7 +124,7 @@ document.getElementById("levelArea").innerHTML = level;
 
 function checkPlayerClicks(){
 
-	if (clickCounter === playerSequence.length){
+	if (clickCounter === computerSequence.length){
 			compareAgainstComp();
 		}
 }
@@ -140,15 +139,11 @@ function compareAgainstComp(){
   	clickCounter = 0;
   	startRound();
   	  }else{
+  	  	document.getElementById("messageBox").innerHTML = "Wrong Guess. GAME OVER. Press CLEAR & then START & try again.";
   		console.log("game over");
   }
 }
 	//if computer array is  ==== player array then go back to startRound, else looser
-
-
-
-
-
 
 
 
