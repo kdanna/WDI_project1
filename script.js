@@ -9,6 +9,8 @@ var level = 0; //a counter to keep track of level
 var toNextLevel = false; //need to keep track of color and comp vs. player toggle
 var clickCounter  = 0;
 
+var messageBox = "";
+
 var bar1 = document.getElementById("bar1");
 var bar2 = document.getElementById("bar2");
 var bar3 = document.getElementById("bar3");
@@ -73,7 +75,6 @@ document.getElementById("levelArea").innerHTML = level;
 		level = 0;
 		document.getElementById("levelArea").innerHTML = "Press START to play again";
 	}
-
 
 //startRound sets the level to 1 and will increase by 1 each time it runs
 	function startRound(){
@@ -140,7 +141,7 @@ function compareAgainstComp(){
   	clickCounter = 0;
   	startRound();
   	  }else{
-  		console.log("game over");
+  	  	console.log("game over");
   }
 }
 	//if computer array is  ==== player array then go back to startRound, else looser

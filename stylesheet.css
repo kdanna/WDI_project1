@@ -9,7 +9,7 @@ body{
 	/*font-size: 100px !important;*/
 }
 
-#resetbutton{
+#resetbutton: hover{
 	height: 50px;
 }
 
@@ -23,11 +23,12 @@ body{
 }
 
 .col-md-3{
-   border: 1px solid black;
+/*   border: 1px solid black;*/
    height: 700px;
 }
 
-#bar1 {
+
+#bar1{
 	background-color: MediumBlue;
 }
 
