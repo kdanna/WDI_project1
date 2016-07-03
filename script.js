@@ -1,5 +1,7 @@
 window.onload = setGame;
 
+//UPDATE for homeowrk. combine start/clear button.  make it clear when click takes place (idea - set flash function each click) css shrink? 
+
 //Global Variables
 var computerSequence = []; //an array to keep track of computerSequence 
 var playerSequence = []; //an array to keep track of the player's moves
@@ -11,32 +13,39 @@ var bar2 = document.getElementById("bar2");
 var bar3 = document.getElementById("bar3");
 var bar4 = document.getElementById("bar4");
 
+
 //Adding event listeners to each bar. The clickCounter will populate and the checkPlayerCLicks function will run when clicks happen.
-	
-		playerSequence = [];
+playerSequence = [];
+
 		$('#bar1').click(function() { 
 			playerSequence.push(bar1.id);
 			clickCounter++;
 			checkPlayerClicks();
+			$('#bar1').fadeOut(100).fadeIn(100);
 		});
 
 		$('#bar2').click(function() { 
 			playerSequence.push(bar2.id);
 			clickCounter++;
 			checkPlayerClicks();
+			$('#bar2').fadeOut(100).fadeIn(100);
+
 		});
 
 		$('#bar3').click(function() { 
 			playerSequence.push(bar3.id);
 			clickCounter++;
 			checkPlayerClicks();
+			$('#bar3').fadeOut(100).fadeIn(100);
 		});
 
 		$('#bar4').click(function() { 
 			playerSequence.push(bar4.id);
 			clickCounter++;
 			checkPlayerClicks();
+			$('#bar4').fadeOut(100).fadeIn(100);
 		});
+
 
 
 //set the event listen on the start button
@@ -71,6 +80,7 @@ document.getElementById("levelArea").innerHTML = "Round: " + level;
 	function startRound(){
 		levelUp();
 		computerRandom();
+		document.getElementById("messageBox").innerHTML = "The computer will flash " + level + " time(s).";
 	}
 
 
@@ -97,8 +107,9 @@ document.getElementById("levelArea").innerHTML = "Round: " + level;
 
 //WORKS. This function is triggered once the computerRandom function runs.
 	function startFlash () {
-		for (var i =0; i < computerSequence.length; i++) 
+		for (var i =0; i < computerSequence.length; i++){	
 				setFlash(i);
+		}
 	}
 
 
@@ -125,6 +136,8 @@ document.getElementById("levelArea").innerHTML = "Round: " + level;
 	  	clickCounter = 0;
 	  	startRound();
 	  	  }else{
-	  	  	document.getElementById("messageBox").innerHTML = "Wrong Guess. GAME OVER. Press CLEAR & then START & try again.";
+	  	  	document.getElementById("messageBox").innerHTML = "Wrong Guess. GAME OVER. Press CLEAR & then START to try again.";
 	  }
+
 	}
+
