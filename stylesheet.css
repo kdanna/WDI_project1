@@ -16,14 +16,15 @@ body{
 
 #levelArea{
 	height:50px;
-	color: red;
+	color: white;
 	font-size: 20px;
 	font-weight: bold
 }
 
 #messageBox{
-	font-size: 14px;
-	color: red;
+	font-size: 20px;
+	font-weight: bold;
+	color: yellow;
 
 }
 
@@ -37,42 +38,26 @@ body{
    height: 700px;
 }
 
-#bar1 {
-	background-color: MediumBlue;
-   height: 700px;
-}
 
 #bar1{
  	background-color: mediumBlue;
 }
 
-#bar1:hover{
-	opacity: 0.8;
-}
 
 #bar2{
 	background-color: LightBlue;
 }
 
-#bar2:hover{
-	opacity: 0.8;
-}
 
 #bar3{
 	background-color: cyan;
 }
 
-#bar3:hover{
-	opacity: 0.8;
-}
 
 #bar4{
 	background-color: teal;
 }
 
-#bar4:hover{
-	opacity: 0.8;
-}
 
 
 
